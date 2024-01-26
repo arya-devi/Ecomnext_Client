@@ -12,17 +12,20 @@ export const ButtonStyle = css`
   font-weight:bold;
   svg {
     height: 20px;
-    margin-left: 5px;
+    margin-right: 5px;
   }
-
-  ${(props) =>
+  ${props => props.block && css`
+  display: block;
+  width: 100%;
+`}
+  ${props =>
     props.white &&
     !props.outline &&
     css`
       background-color: #fff;
       color: #000;
     `}
-  ${(props) =>
+  ${props =>
     props.white &&
     props.outline &&
     css`
@@ -30,21 +33,36 @@ export const ButtonStyle = css`
       color: #fff;
       border: 1px solid #fff;
     `}
-${(props) =>
+  ${props =>
+    props.black &&
+    !props.outline &&
+    css`
+      background-color: #000;
+      color: #fff;
+    `}
+  ${props =>
+    props.black &&
+    props.outline &&
+    css`
+      background-color: transparent;
+      color: #000;
+      border: 1px solid #000;
+    `}
+${props =>
     props.primary && !props.outline &&
     css`
       background-color: ${primary};
       border: 1px solid ${primary};
       color: #fff;
     `}
-${(props) =>
+${props =>
     props.primary && props.outline &&
     css`
       background-color: transparent;
       border: 1px solid ${primary};
       color: ${primary};
     `}
-${(props) =>
+${props =>
     props.size === "l" &&
     css`
       font-size: 1rem;
